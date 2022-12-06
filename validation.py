@@ -1,6 +1,7 @@
 import gym
 from gym_anytrading.datasets import FOREX_EURUSD_1H_ASK
 import matplotlib.pyplot as plt
+from model import Model
 
 
 env = gym.make('forex-v0',
@@ -9,15 +10,15 @@ env = gym.make('forex-v0',
                frame_bound = (10, 300),
                unit_side = 'right')
 
+model = Model(env)
+
+
 observation = env.reset()
 while True:
-    action = env.action_space.sample()
+    action = model.predict(observation)
     observation, reward, done, info = env.step(action)
 
-    print(observation)
-    print(reward)
-    print(info)
-    print()
+    model.fit(reward)
 
     if done:
         print("info:", info)
