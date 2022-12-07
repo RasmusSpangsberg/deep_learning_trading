@@ -20,11 +20,8 @@ class PolicyNet(nn.Module):
         x = self.hidden(x)
         x = F.relu(x)
         x = self.out(x)
-        #x = F.sigmoid(x)
         x = F.softmax(x)
-        print("x after softmax:", x)
         x = torch.round(x)
-        print("x after round:", x)
 
         return x
 
