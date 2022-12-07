@@ -7,7 +7,9 @@ from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.evaluation import evaluate_policy
 import numpy as np
 import pandas as pd
+import torch
 
+torch.manual_seed(0)
 
 # data
 csv_filename = "STOCK_US_XNYS_GME.csv"
@@ -28,6 +30,7 @@ observation = env.reset()
 while True:
     observation = observation[np.newaxis, ...]
     action, _states = policy.predict(observation)
+    #action = env.action_space.sample()
     observation, reward, done, info = env.step(action)
 
     if done:
