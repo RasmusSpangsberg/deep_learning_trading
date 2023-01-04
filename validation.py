@@ -2,7 +2,7 @@ import gym
 from gym_anytrading.datasets import FOREX_EURUSD_1H_ASK, STOCKS_GOOGL
 import matplotlib.pyplot as plt
 from model import PolicyNet
-from stable_baselines3 import A2C
+from stable_baselines3 import A2C, DQN, PPO
 from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.evaluation import evaluate_policy
 import numpy as np
